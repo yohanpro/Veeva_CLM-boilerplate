@@ -1,0 +1,125 @@
+/**************************************************/
+/* GSK Veeva Master Template - Core Functionality */
+/**************************************************/
+/* File version              1.4.1               */
+/* Last modified             02/05/2017           */
+/* Last modified by          T.T.                 */
+/**************************************************/
+
+var com = com || {};
+com.gsk = com.gsk || {};
+com.gsk.mtconfig = {
+    "presentation": "Relvar_Efficacy_SC_2018_KR1.0_MAIN",
+    "homepage": "Relvar_Efficacy_SC_2018_KR1.0_000",
+    "menuPresentation": "",
+    "menu": "",
+    "embedMenu": false,
+    "referencesPresentation": "Relvar_Efficacy_SC_2018_KR1.0_ADD",
+    "references": "Relvar_Efficacy_SC_2018_KR1.0_REFS",
+    "embedReferences": false,
+    "piPresentation": "Relvar_Efficacy_SC_2018_KR1.0_ADD",
+    "pi": "Relvar_Efficacy_SC_2018_KR1.0_PI",
+    "siPresentation": "",
+    "si": "",
+    "embedSi": false,
+    "embedPi": false,
+    "importPi": false,
+    "veevaSwipe": "0",
+    "mtgskAnimations": "1",
+    "mtgskPortrait": "0",
+    "mtgskUS": false,
+    "dialogMaxWidth": 924,
+    "dialogMaxHeight": 668,
+    "enableQuickLinksOnDialog": false,
+    "enableSwipesOnDialog": false,
+    "referencesAll": [
+        "Woodcock A, Vestbo J, Bakerly ND, New J, Gibson JM, McCorkindale S, <em>et al.</em> Effectiveness of fluticasone furoate plus vilanterol on asthma control in clinical practice: an open label, parallel group, randomised controlled trial. Lancet 2017; doi.org/10.1016/S0140-6736(17)32397-8",
+        "Bateman ED, O’Byrne PM, Busse WW, Lötvall J, Bleecker ER, Andersen L, <em>et al. </em>Once-daily fluticasone furoate (FF)/ vilanterol reduces risk of severe exacerbations in asthma versus FF alone <em>Thorax</em>. 2014;69:312–319.",
+        "Bernstein DI, Bateman ED, Woodcock A, Toler WT, Forth R, Jacques L, <em>et al.</em> Fluticasone furoate (FF)/vilanterol (100/25 mcg or 200/25 mcg) or FF (100 mcg) in persistent asthma. J Asthma. 2015;52(10):1073–1083. ",
+        "Kerwin E, Barnes N, Gibbs M, Leather D, Forth R, Jacques L, <em>et al.</em> Fluticasone furoate/vilanterol once daily improves night-time awakenings in asthma patients with night symptoms; post-hoc analyses of three randomized controlled trials. <em>J Asthma. </em>2017; doi: 10.1080/02770903.2017.1362429.",
+        "Oliver A, Bjermer L, Quinn D, Saggu P, Thomas P, Yarnall K, <em>et al. </em>Modulation of allergen-induced bronchoconstriction by fluticasone furoate and vilanterol alone or in combination.<em> Allergy.</em> 2013;68:1136–1142. ",
+        "Svedsater H, Jacques L, Goldfrad C, Bleecker ER. Ease of use of the ELLIPTA dry powder inhaler: data from three randomised controlled trials in patients with asthma. <em>npj Prim Care Respir Med.</em> 2014;24:14019.",
+    ],
+    "footnotesAll": [
+        "<span>Bateman ED <em>et al.</em> 2014:</span><sup>2</sup> a ≥24- to 78-week, randomised, double-blind, parallel-group study comparing Relvar 100/25 mcg OD with FF 100 mcg OD in patients with asthma with ≥1 recorded exacerbation in the last year (n=2,019)",
+        "<span>Bernstein DI <em>et al.</em> 2015:</span><sup>3</sup> a 12-week, randomised, double-blind, stratified, parallel-group, multicentre study comparing Relvar Ellipta 100/25 mcg OD with fluticasone furoate 100 mcg (primary objective) and Relvar Ellipta 100/25 mcg OD with Relvar Ellipta 200/25 mcg OD (descriptive comparison only) in patients with moderate-to-severe persistent asthma (N=1,039). The primary superiority endpoint was mean change in serial (0–24 h) weighted FEV<sub>1</sub> and was met.",
+        "<span>Kerwin A <em>et al.</em> 2017:</span><sup>4</sup> post-hoc analyses of eDiary data obtained from three randomised, double-blind, parallel-group, multicentre, global Phase III studies that compared Relvar 100/25 mcg and 200/25 mcg with FF 100 mcg, FF 200 mcg, FP 500 mcg or placebo in patients with persistent asthma that was uncontrolled on ICS±LABA. Night-time asthma was assessed according to the following scale on the eDiary: 0=no symptoms during the night; 1=symptoms causing me to wake once (or wake early); 2=symptoms causing me to wake twice or more (including waking early); 3=symptoms causing me to be awake for most of the night; 4=symptoms so severe I did not sleep at all. An eDiary score of 0 was required for the patient to be considered symptom-free.",
+        "<span>Oliver A <em>et al</em>. 2013:</span><sup>5</sup> a randomised, double-blind, placebo-controlled, four-way crossover design to compare the effects of once-daily Relvar 100/25 mcg with FF 100 mcg and VI 25 mcg on early and late ARs (primary objectives) and airway hyper-responsiveness in patients with allergic asthma (N=27). Allergen challenge was performed 1 hour post-dose on Day 21. Statistical significance of treatment comparisons was determined by the absence of zero from the 95% CI following statistical testing.",
+        "Relvar was significantly superior to FF and VI for early AR. Relvar was not significantly superior to FF for late AR, but was significantly superior to VI. Patients were required to have a positive wheal and flare reaction (skin prick test ≥3 mm diameter relative to negative control) at screening.",
+    ],
+    "pageFootnotesAll": [
+        [],
+        [1],
+        [],
+        [],
+        [1],
+        [2],
+        [3],
+        [4],
+        [2],
+    ],
+    "pageReferencesAll": [
+        [],
+        [],
+        [1],
+        [1],
+        [2],
+        [3],
+        [4],
+        [5],
+        [1, 3, 6],
+    ],
+    "pagesAll": [
+        "Relvar_Efficacy_SC_2018_KR1.0_000",
+        "Relvar_Efficacy_SC_2018_KR1.0_001",
+        "Relvar_Efficacy_SC_2018_KR1.0_002",
+        "Relvar_Efficacy_SC_2018_KR1.0_003",
+        "Relvar_Efficacy_SC_2018_KR1.0_004",
+        "Relvar_Efficacy_SC_2018_KR1.0_005",
+        "Relvar_Efficacy_SC_2018_KR1.0_006",
+        "Relvar_Efficacy_SC_2018_KR1.0_007",
+        "Relvar_Efficacy_SC_2018_KR1.0_008",
+    ],
+    "pagesTitles": [
+        "others",
+        "Relvar’s Asthma Control",
+        "Relvar’s Asthma Control",
+        "Relvar’s Asthma Control",
+        "Relvar’s Relative Reduction in Exacerbations",
+        "Relvar’s Relative Reduction in Exacerbations",
+        "Relvar’s Relative Reduction in Exacerbations",
+        "Relvar’s Allergy Prevention",
+        "Relvar’s Allergy Prevention",
+    ],
+    "pagesDesc": [
+        "Cover",
+        "Comparison of Relvar and other ICS/LABA in effectiveness",
+        "Comparison of Relvar and other ICS/LABA in effectiveness",
+        "Comparison of Relvar and other ICS/LABA in effectiveness",
+        "Comparison of Relvar and other ICS/LABA in relative reduction in exacerbations",
+        "Comparison of Relvar and other ICS/LABA in relative reduction in exacerbations",
+        "Comparison of Relvar and other ICS/LABA in relative reduction in exacerbations",
+        "Comparison of Relvar and other ICS/LABA in allergy prevention",
+        "Comparison of Relvar and other ICS/LABA in allergy prevention",
+    ],
+    "addAll": [
+        "Relvar_Efficacy_SC_2018_KR1.0_PI",
+        "Relvar_Efficacy_SC_2018_KR1.0_REFS",
+    ],
+    "addTitles": [
+        "PI",
+        "References"
+    ],
+    "flows": {
+        "Main": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    },
+    "homeResetsFlows": true,
+    "subSlides": {},
+    "useEmail": false,
+    "vaultID": "",
+    "templateID": "",
+    "fragments": [],
+    "pagesEmail": {},
+    "customFragmentSelector": false,
+    "customFragmentSelectorContainer": "#fragmentSelector #inner"
+};
