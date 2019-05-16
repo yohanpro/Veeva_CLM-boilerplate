@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+var gulp = require("gulp");
+const shell = require("shelljs");
+const setting = require("../../config.json");
+
+const { presentation, ProductName, numberOfSlide, shared } = setting;
+const baseDir = require("../../gulpfile");
+const distDir = baseDir + "/dist";
+const presentationDir = `${distDir}/${presentation}`;
+const copyDir = baseDir + "/copy";
+const fs = require("fs");
+
+const slides = [];
+for (let i = 0; i < numberOfSlide; i++) {
+  let name = "";
+  if (i < 10) {
+    name = "00" + i;
+  } else if (i >= 10) {
+    name = "0" + i;
+  }
+  name = presentation + "_" + name;
+  slides.push(name);
+}
+
+gulp.task("test", () => {
+  console.log(slides);
+});
+
+let data = `<!DOCTYPE html>
 
 <head>
   <title>Eliquis_Nudge_LongJourney-2019_1.0_000</title>
@@ -24,4 +51,16 @@
   <script src="../shared/js/swipe.js"></script>
   <script src="../shared/js/presentation.js"></script>
 </body>
-</html>
+</html>`;
+
+gulp.task("putHtml", () => {
+  shell.cd(presentationDir);
+  //프레젠테이션을 열고
+  console.log(shell.pwd());
+  //각각의 슬라이드에 index.html파일을 넣어준다.
+});
+
+gulp.task("buildHtml", () => {
+  shell.cd(copyDir);
+  fs.writeFile(`${copyDir}/index.html`, data, "utf8", error => {});
+});
