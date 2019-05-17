@@ -54,9 +54,14 @@ let data = `<!DOCTYPE html>
 </html>`;
 
 gulp.task("putHtml", () => {
-  shell.cd(presentationDir);
   //프레젠테이션을 열고
-  console.log(shell.pwd());
+  shell.cd(presentationDir);
+  shell.ls(presentationDir).forEach(slide => {
+    shell.cd(slide);
+    shell.cp("-P", `${copyDir}/index.html`, slide);
+    shell.cd("..");
+  });
+
   //각각의 슬라이드에 index.html파일을 넣어준다.
 });
 
