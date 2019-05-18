@@ -25,10 +25,10 @@ gulp.task("test", () => {
   console.log(slides);
 });
 
-let data = `<!DOCTYPE html>
-
+const makeHtml = slide => {
+  let data = `<!DOCTYPE html>
 <head>
-  <title>Eliquis_Nudge_LongJourney-2019_1.0_000</title>
+  <title>${slide}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no" />
@@ -50,22 +50,44 @@ let data = `<!DOCTYPE html>
   <script src="../shared/js/core.js"></script>
   <script src="../shared/js/swipe.js"></script>
   <script src="../shared/js/presentation.js"></script>
+  <script src="js/local.js"></script>
 </body>
 </html>`;
+  return data;
+};
+
+gulp.task("putJs", () => {
+  shell.cd(presentationDir);
+  shell.ls(presentationDir).forEach(slide => {
+    shell.cd(slide);
+    shell.mkdir("js");
+    shell.cd("js");
+    fs.writeFile("local.js", "", "utf8", err => {});
+    shell.cd("..");
+    shell.cd("..");
+  });
+});
+
+gulp.task("putCss", () => {
+  shell.cd(presentationDir);
+  shell.ls(presentationDir).forEach(slide => {
+    shell.cd(slide);
+    shell.mkdir("css");
+    shell.cd("css");
+    fs.writeFile("styles.css", "", "utf8", err => {});
+    shell.cd("..");
+    shell.cd("..");
+  });
+});
 
 gulp.task("putHtml", () => {
   //프레젠테이션을 열고
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
+    let htmlData = makeHtml(slide);
     shell.cd(slide);
-    shell.cp("-P", `${copyDir}/index.html`, slide);
+    fs.writeFile("index.html", htmlData, "utf8", err => {});
     shell.cd("..");
   });
-
   //각각의 슬라이드에 index.html파일을 넣어준다.
-});
-
-gulp.task("buildHtml", () => {
-  shell.cd(copyDir);
-  fs.writeFile(`${copyDir}/index.html`, data, "utf8", error => {});
 });

@@ -39,4 +39,4 @@ gulp.task("copyGeneralFiles", () => {
 
   shell.rm("r", [`${copyDir}/index.html`, "styles/"]);
 });
-gulp.task("build", ["makeDir", "makeSubDir"]);
+gulp.task("build", ["makeDir", "makeSubDir", "putHtml", "putCss", "putJs"]);
