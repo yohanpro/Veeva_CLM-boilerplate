@@ -105,7 +105,7 @@ gulp.task("cpShared", () => {
   fs.writeFile("index.html", "<html>shared</html>", "utf8", err => {});
   shell.cp(
     "-Rf",
-    [`${copyDir}/css`, `${copyDir}/media`],
+    [`${copyDir}/css`, `${copyDir}/media/*`],
     `${presentationDir}/shared`
   );
 });

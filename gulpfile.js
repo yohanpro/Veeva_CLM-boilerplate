@@ -7,11 +7,12 @@
 /**********************************************************/
 
 const baseDir = __dirname;
-const gulp = require("gulp");
 module.exports = baseDir;
+const gulp = require("gulp");
 
 require("./gulp/task/makeDir");
 require("./gulp/task/putAssets");
+require("./gulp/task/makeShFile");
 
 gulp.task("build", [
   "makeDir",
@@ -19,5 +20,6 @@ gulp.task("build", [
   "putHtml",
   "putCss",
   "putJs",
-  "cpShared"
+  "cpShared",
+  "makeShfile"
 ]);
