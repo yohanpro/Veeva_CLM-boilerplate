@@ -30,6 +30,9 @@ gulp.task("makeSubDir", () => {
     }
     shell.mkdir(`${presentation}_${name}`);
   }
+  if (shared) {
+    shell.mkdir("shared");
+  }
 });
 
 gulp.task("copyGeneralFiles", () => {

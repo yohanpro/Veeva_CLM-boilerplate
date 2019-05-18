@@ -1,19 +1,45 @@
-var com = com || {};
+const setting = require("../config.json");
+const gulp = require("gulp");
+const { presentation, ProductName, numberOfSlide, shared } = setting;
+const baseDir = require("../gulpfile");
+const distDir = baseDir + "/dist";
+const presentationDir = `${distDir}/${presentation}`;
+const copyDir = baseDir + "/copy";
+const fs = require("fs");
+
+const slides = [];
+for (let i = 0; i < numberOfSlide; i++) {
+  let name = "";
+  if (i < 10) {
+    name = "00" + i;
+  } else if (i >= 10) {
+    name = "0" + i;
+  }
+  name = presentation + "_" + name;
+  slides.push(name);
+}
+const makeslides = () => {
+  let newSlides = slides.map(el => {
+    el = `'${el}'`;
+    return el;
+  });
+  return newSlides;
+};
+
+gulp.task("test", () => {
+  let data = makeslides();
+  console.log(data);
+});
+
+const makeCoreJS = () => {
+  const data = `var com = com || {};
 com.inno = com.inno || {};
 com.inno.veeva = {
-    presentation: 'Eliquis_Nudge_LongJourney-2019_1.0',
-    slides: [
-        'Eliquis_Nudge_LongJourney-2019_1.0_000',
-        'Eliquis_Nudge_LongJourney-2019_1.0_001',
-        'Eliquis_Nudge_LongJourney-2019_1.0_002',
-        'Eliquis_Nudge_LongJourney-2019_1.0_003',
-        'Eliquis_Nudge_LongJourney-2019_1.0_004',
-        'Eliquis_Nudge_LongJourney-2019_1.0_005',
-    ],
+    presentation: '${presentation}',
+    slides: [${makeslides()}],
     addSlides: [
-''
     ],
-    home: 'Eliquis_Nudge_LongJourney-2019_1.0_000',
+    home: '${slides[0]}',
     pi: '',
     spi: '',
     refs: '',
@@ -372,4 +398,8 @@ $(document).ready(function () {
     }
 
 
-});
+});`;
+  return data;
+};
+
+module.exports = { makeCoreJS };
