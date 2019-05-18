@@ -14,7 +14,6 @@ gulp.task("deleteDist", () => {
 });
 
 gulp.task("makeDir", ["deleteDist"], () => {
-  console.log(presentation, ProductName, numberOfSlide);
   shell.cd(distDir);
   shell.exec(`mkdir ${presentation}`);
 });
@@ -30,16 +29,10 @@ gulp.task("makeSubDir", () => {
     }
     shell.mkdir(`${presentation}_${name}`);
   }
-  if (shared) {
-    shell.mkdir("shared");
-  }
-});
+  shell.mkdir(`${presentation}_REFS`);
+  shell.mkdir(`${presentation}_PI`);
 
-gulp.task("copyGeneralFiles", () => {
-  shell.cd(copyDir);
-  shell.cp("-R", "*", distDir);
-  shell.cd(distDir);
-
-  shell.rm("r", [`${copyDir}/index.html`, "styles/"]);
+  shell.cp("-Rf", `${copyDir}/.gitignore`, distDir);
+  shell.mkdir("shared");
 });
-gulp.task("build", ["makeDir", "makeSubDir", "putHtml", "putCss", "putJs"]);
+// fs.writeFile("README.md", `${presentationDir}`, "utf8", err => {});

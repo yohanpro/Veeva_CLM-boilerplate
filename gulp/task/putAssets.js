@@ -88,6 +88,7 @@ gulp.task("putHtml", () => {
     if (slide !== "shared") {
       let htmlData = makeHtml(slide);
       shell.cd(slide);
+      // fs.writeFile("index.html", htmlData, "utf8", err => {});
       fs.writeFile("index.html", htmlData, "utf8", err => {});
       shell.cd("..");
     }
@@ -100,4 +101,11 @@ gulp.task("cpShared", () => {
   let data = makeCoreJS();
   shell.cd(`${presentationDir}/shared/js`);
   fs.writeFile("core.js", data, "utf8", err => {});
+  shell.cd(`${presentationDir}/shared/`);
+  fs.writeFile("index.html", "<html>shared</html>", "utf8", err => {});
+  shell.cp(
+    "-Rf",
+    [`${copyDir}/css`, `${copyDir}/media`],
+    `${presentationDir}/shared`
+  );
 });
