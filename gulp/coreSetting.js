@@ -40,9 +40,9 @@ com.inno.veeva = {
     addSlides: [
     ],
     home: '${slides[0]}',
-    pi: '',
+    pi:'${presentation}_PI',
     spi: '',
-    refs: '',
+    refs: '${presentation}_REFS',
     isVeeva: false,
     isWindow: false,
     currentSlide: '',
@@ -381,23 +381,13 @@ $(document).ready(function () {
     document.addEventListener('touchmove', function (e) {
         e.preventDefault();
     }, false);
-
-
     com.inno.veeva.init();
-
-
-
-
     var closeBtn = $('.btn-close');
-
     if (closeBtn.length) {
-
         closeBtn.on(com.inno.veeva.touchEvent, function () {
             com.inno.veeva.navigateToPrevMainSlide();
         });
     }
-
-
 });`;
   return data;
 };

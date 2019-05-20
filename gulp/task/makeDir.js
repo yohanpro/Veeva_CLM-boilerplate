@@ -18,7 +18,7 @@ gulp.task("makeDir", ["deleteDist"], () => {
   shell.exec(`mkdir ${presentation}`);
 });
 
-gulp.task("makeSubDir", ["makeDir"], () => {
+gulp.task("makeSubDir", () => {
   shell.cd(presentationDir);
   for (let i = 0; i < numberOfSlide; i++) {
     let name = "";
