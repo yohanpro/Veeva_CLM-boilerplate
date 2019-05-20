@@ -22,6 +22,6 @@ gulp.task("build", [
   "putCss",
   "putJs",
   "cpShared",
-  "makeShfile",
-  "makeEtc"
+  "makeShfile"
+  // "makeEtc"
 ]);

@@ -10,7 +10,7 @@ const copyDir = baseDir + "/copy";
 const fs = require("fs");
 
 gulp.task("deleteDist", () => {
-  shell.rm("-rf", `${baseDir}/dist/*`);
+  shell.rm("-Rf", `${baseDir}/dist/*`);
 });
 
 gulp.task("makeDir", ["deleteDist"], () => {
@@ -18,7 +18,7 @@ gulp.task("makeDir", ["deleteDist"], () => {
   shell.exec(`mkdir ${presentation}`);
 });
 
-gulp.task("makeSubDir", () => {
+gulp.task("makeSubDir", ["makeDir"], () => {
   shell.cd(presentationDir);
   for (let i = 0; i < numberOfSlide; i++) {
     let name = "";

@@ -88,7 +88,6 @@ gulp.task("putHtml", () => {
     if (slide !== "shared") {
       let htmlData = makeHtml(slide);
       shell.cd(slide);
-      // fs.writeFile("index.html", htmlData, "utf8", err => {});
       fs.writeFile("index.html", htmlData, "utf8", err => {});
       shell.cd("..");
     }
