@@ -59,24 +59,17 @@ const makeHtml = slide => {
 </html>`;
   return data;
 };
-const forAsync = (putAction, slide) => {
-  return new Promise((res, rej) => {
-    shell.cd(presentationDir);
-    shell.cd(slide);
-    shell.mkdir(putAction);
-    shell.cd(putAction);
-    res();
-  });
-};
+
 gulp.task("putJs", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      forAsync("js", slide).then(() => {
-        shell.cd(slide);
-        fs.writeFile("local.js", "", "utf8", err => {});
+      shell.cd(`${presentationDir}/${slide}`);
+      shell.mkdir("js");
+      fs.writeFile("local.js", "", "utf8", err => {});
+      setTimeout(() => {
         shell.cd("../../");
-      });
+      }, 10);
     }
   });
 });
@@ -85,9 +78,12 @@ gulp.task("putCss", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      forAsync();
+      shell.cd(`${presentationDir}/${slide}`);
+      shell.mkdir("css");
       fs.writeFile("styles.css", "", "utf8", err => {});
-      shell.cd("../../");
+      setTimeout(() => {
+        shell.cd("../../");
+      }, 10);
     }
   });
 });
@@ -98,14 +94,27 @@ gulp.task("putHtml", ["putCss", "putJs"], () => {
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
       let htmlData = makeHtml(slide);
-      shell.cd(slide);
+      shell.cd(`${presentationDir}/${slide}`);
       fs.writeFile("index.html", htmlData, "utf8", err => {});
-      shell.cd("..");
+      setTimeout(() => {
+        shell.cd("..");
+      }, 10);
     }
   });
   //각각의 슬라이드에 index.html파일을 넣어준다.
 });
-
+gulp.task("makeImageFolder", () => {
+  shell.cd(presentationDir);
+  shell.ls(presentationDir).forEach(slide => {
+    if (slide !== "shared") {
+      shell.cd(`${presentationDir}/${slide}`);
+      shell.mkdir("images");
+      setTimeout(() => {
+        shell.cd("..");
+      }, 10);
+    }
+  });
+});
 //shared 세팅
 gulp.task("cpShared", () => {
   shell.cp("-Rf", `${copyDir}/js`, `${presentationDir}/shared`);
