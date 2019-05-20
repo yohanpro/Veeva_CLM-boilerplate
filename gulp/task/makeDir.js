@@ -24,7 +24,6 @@ gulp.task("makeDir", ["deleteDist"], () => {
   if (!`${distDir}`) {
     shell.mkdir(`${distDir}`);
   }
-
   shell.cd(distDir);
   shell.exec(`mkdir ${presentation}`);
 });
