@@ -59,16 +59,12 @@ const makeHtml = slide => {
 </html>`;
   return data;
 };
-const forAsync = (putAction, file) => {
+const forAsync = (putAction, slide) => {
   return new Promise((res, rej) => {
     shell.cd(presentationDir);
-    shell.ls(presentationDir).forEach(slide => {
-      if (slide !== "shared") {
-        shell.cd(slide);
-        shell.mkdir(putAction);
-        shell.cd(putAction);
-      }
-    });
+    shell.cd(slide);
+    shell.mkdir(putAction);
+    shell.cd(putAction);
     res();
   });
 };
@@ -76,11 +72,11 @@ gulp.task("putJs", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      shell.cd(slide);
-      shell.mkdir("js");
-      shell.cd("js");
-      fs.writeFile("local.js", "", "utf8", err => {});
-      shell.cd("../../");
+      forAsync("js", slide).then(() => {
+        shell.cd(slide);
+        fs.writeFile("local.js", "", "utf8", err => {});
+        shell.cd("../../");
+      });
     }
   });
 });
@@ -89,12 +85,9 @@ gulp.task("putCss", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      shell.cd(slide);
-      shell.mkdir("css");
-      shell.cd("css");
+      forAsync();
       fs.writeFile("styles.css", "", "utf8", err => {});
       shell.cd("../../");
-      // shell.cd("..");
     }
   });
 });
