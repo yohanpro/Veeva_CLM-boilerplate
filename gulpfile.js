@@ -13,6 +13,7 @@ const gulp = require("gulp");
 require("./gulp/task/makeDir");
 require("./gulp/task/putAssets");
 require("./gulp/task/makeShFile");
+require("./gulp//task/makeEtc");
 
 gulp.task("build", [
   "makeDir",
@@ -21,5 +22,6 @@ gulp.task("build", [
   "putCss",
   "putJs",
   "cpShared",
-  "makeShfile"
+  "makeShfile",
+  "makeEtc"
 ]);
