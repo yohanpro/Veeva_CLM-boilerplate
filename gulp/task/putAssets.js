@@ -96,6 +96,7 @@ gulp.task("putHtml", () => {
   //각각의 슬라이드에 index.html파일을 넣어준다.
 });
 
+//shared 세팅
 gulp.task("cpShared", () => {
   shell.cp("-Rf", `${copyDir}/js`, `${presentationDir}/shared`);
   let data = makeCoreJS();
