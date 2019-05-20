@@ -1,8 +1,15 @@
+var gulp = require("gulp");
+const shell = require("shelljs");
 const setting = require("../config.json");
-const gulp = require("gulp");
-const { presentation, ProductName, numberOfSlide, shared } = setting;
+
+const {
+  presentation,
+  ProductName,
+  numberOfSlide,
+  DirectoryOfPresentation
+} = setting;
 const baseDir = require("../gulpfile");
-const distDir = baseDir + "/dist";
+const distDir = baseDir + `/${DirectoryOfPresentation}`;
 const presentationDir = `${distDir}/${presentation}`;
 const copyDir = baseDir + "/copy";
 const fs = require("fs");

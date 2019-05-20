@@ -2,11 +2,18 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const { presentation, ProductName, numberOfSlide, shared } = setting;
-const baseDir = require("../../gulpfile");
-const distDir = baseDir + "/dist";
-const presentationDir = `${distDir}/${presentation}`;
-const copyDir = baseDir + "/copy";
+const {
+  presentation,
+  ProductName,
+  numberOfSlide,
+  DirectoryOfPresentation
+} = setting;
+const {
+  baseDir,
+  distDir,
+  presentationDir,
+  copyDir
+} = require("../../gulpfile");
 const fs = require("fs");
 const { makeCoreJS } = require("../coreSetting");
 
@@ -57,12 +64,12 @@ gulp.task("putJs", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      shell.cd(slide);
+      shell.cd(`${presentationDir}/${slide}`);
       shell.mkdir("js");
-      shell.cd("js");
       fs.writeFile("local.js", "", "utf8", err => {});
-      shell.cd("..");
-      shell.cd("..");
+      setTimeout(() => {
+        shell.cd("../../");
+      }, 10);
     }
   });
 });
@@ -71,30 +78,43 @@ gulp.task("putCss", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
-      shell.cd(slide);
+      shell.cd(`${presentationDir}/${slide}`);
       shell.mkdir("css");
-      shell.cd("css");
       fs.writeFile("styles.css", "", "utf8", err => {});
-      shell.cd("..");
-      shell.cd("..");
+      setTimeout(() => {
+        shell.cd("../../");
+      }, 10);
     }
   });
 });
 
-gulp.task("putHtml", () => {
+gulp.task("putHtml", ["putCss", "putJs"], () => {
   //프레젠테이션을 열고
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
     if (slide !== "shared") {
       let htmlData = makeHtml(slide);
-      shell.cd(slide);
+      shell.cd(`${presentationDir}/${slide}`);
       fs.writeFile("index.html", htmlData, "utf8", err => {});
-      shell.cd("..");
+      setTimeout(() => {
+        shell.cd("..");
+      }, 10);
     }
   });
   //각각의 슬라이드에 index.html파일을 넣어준다.
 });
-
+gulp.task("makeImageFolder", () => {
+  shell.cd(presentationDir);
+  shell.ls(presentationDir).forEach(slide => {
+    if (slide !== "shared") {
+      shell.cd(`${presentationDir}/${slide}`);
+      shell.mkdir("images");
+      setTimeout(() => {
+        shell.cd("..");
+      }, 10);
+    }
+  });
+});
 //shared 세팅
 gulp.task("cpShared", () => {
   shell.cp("-Rf", `${copyDir}/js`, `${presentationDir}/shared`);
