@@ -18,9 +18,9 @@ require("./gulp//task/makeEtc");
 gulp.task("build", [
   "makeDir",
   "makeSubDir",
-  "putHtml",
   "putCss",
   "putJs",
+  "putHtml",
   "cpShared",
   "makeShfile",
   "makeEtc"
