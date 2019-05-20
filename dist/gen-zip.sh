@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # Directory for generated zip files
-OUT_DIR=~/Projects/Lynpaza/Lynpaza-Quiz-2019/dist
+OUT_DIR=~/Projects/NesinaAct/NesinaAct-sc01-2019/dist
 
 # Directry containing _MAIN and _ADD presentation folders
-PROJECT=~/Projects/Lynpaza/Lynpaza-Quiz-2019/Lynpaza_2019_1.0
+PROJECT=~/Projects/NesinaAct/NesinaAct-sc01-2019/NesinaAct_SC_01-2019
 
 # Directory to common shared
-SHARED_DIR=~/Projects/Lynpaza/Lynpaza-Quiz-2019/Lynpaza_2019_1.0/shared
+SHARED_DIR=~/Projects/NesinaAct/NesinaAct-sc01-2019/NesinaAct_SC_01-2019/shared
 
 # Shared file name specific to the project
-SHARED=Lynpaza_2019_1.0_Shared
+SHARED=NesinaAct_SC_01-2019_Shared
 
 # Clean up old files inside output directory
 cd $OUT_DIR

@@ -2,18 +2,27 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const { presentation, ProductName, numberOfSlide, shared } = setting;
-const baseDir = require("../../gulpfile");
-const distDir = baseDir + "/dist";
-const presentationDir = `${distDir}/${presentation}`;
-const copyDir = baseDir + "/copy";
+const {
+  presentation,
+  ProductName,
+  numberOfSlide,
+  DirectoryOfPresentation
+} = setting;
+const {
+  baseDir,
+  distDir,
+  presentationDir,
+  copyDir
+} = require("../../gulpfile");
 const fs = require("fs");
 
 gulp.task("deleteDist", () => {
-  shell.rm("-Rf", `${baseDir}/dist/*`);
+  shell.rm("-Rf", `${distDir}/*`);
 });
 
 gulp.task("makeDir", ["deleteDist"], () => {
+  shell.mkdir(`${distDir}`);
+
   shell.cd(distDir);
   shell.exec(`mkdir ${presentation}`);
 });

@@ -2,13 +2,20 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const { presentation, ProductName, DirectoryOfPresentation } = setting;
-const baseDir = require("../../gulpfile");
-const distDir = baseDir + "/dist";
-const presentationDir = `${distDir}/${presentation}`;
-const copyDir = baseDir + "/copy";
-const fs = require("fs");
+const {
+  presentation,
+  ProductName,
+  numberOfSlide,
+  DirectoryOfPresentation
+} = setting;
+const {
+  baseDir,
+  distDir,
+  presentationDir,
+  copyDir
+} = require("../../gulpfile");
 
+const fs = require("fs");
 const shZip = () => {
   const shZipFile = `#!/bin/bash
 

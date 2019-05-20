@@ -1,55 +1,14 @@
-var gulp = require("gulp");
-const shell = require("shelljs");
-const setting = require("../config.json");
-
-const {
-  presentation,
-  ProductName,
-  numberOfSlide,
-  DirectoryOfPresentation
-} = setting;
-const baseDir = require("../gulpfile");
-const distDir = baseDir + `/${DirectoryOfPresentation}`;
-const presentationDir = `${distDir}/${presentation}`;
-const copyDir = baseDir + "/copy";
-const fs = require("fs");
-
-const slides = [];
-for (let i = 0; i < numberOfSlide; i++) {
-  let name = "";
-  if (i < 10) {
-    name = "00" + i;
-  } else if (i >= 10) {
-    name = "0" + i;
-  }
-  name = presentation + "_" + name;
-  slides.push(name);
-}
-const makeslides = () => {
-  let newSlides = slides.map(el => {
-    el = `'${el}'`;
-    return el;
-  });
-  return newSlides;
-};
-
-gulp.task("test", () => {
-  let data = makeslides();
-  console.log(data);
-});
-
-const makeCoreJS = () => {
-  const data = `var com = com || {};
+var com = com || {};
 com.inno = com.inno || {};
 com.inno.veeva = {
-    presentation: '${presentation}',
-    slides: [${makeslides()}],
+    presentation: 'NesinaAct_SC_01-2019',
+    slides: ['NesinaAct_SC_01-2019_000','NesinaAct_SC_01-2019_001','NesinaAct_SC_01-2019_002','NesinaAct_SC_01-2019_003','NesinaAct_SC_01-2019_004','NesinaAct_SC_01-2019_005','NesinaAct_SC_01-2019_006','NesinaAct_SC_01-2019_007','NesinaAct_SC_01-2019_008','NesinaAct_SC_01-2019_009','NesinaAct_SC_01-2019_010','NesinaAct_SC_01-2019_011'],
     addSlides: [
     ],
-    home: '${slides[0]}',
-    pi:'${presentation}_PI',
+    home: 'NesinaAct_SC_01-2019_000',
+    pi:'NesinaAct_SC_01-2019_PI',
     spi: '',
-    refs: '${presentation}_REFS',
+    refs: 'NesinaAct_SC_01-2019_REFS',
     isVeeva: false,
     isWindow: false,
     currentSlide: '',
@@ -395,8 +354,4 @@ $(document).ready(function () {
             com.inno.veeva.navigateToPrevMainSlide();
         });
     }
-});`;
-  return data;
-};
-
-module.exports = { makeCoreJS };
+});

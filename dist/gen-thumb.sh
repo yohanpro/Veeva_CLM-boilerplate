@@ -1,9 +1,9 @@
 # Directory containing _MAIN and _ADD presentation folders
 # 처음 'sh gen-thumb.sh'를 실행하는 거라면, 'brew install imagemagick' 설치
 
-PROJECT=~/Projects/Lynpaza/Lynpaza-Quiz-2019/Lynpaza_2019_1.0
+PROJECT=~/Projects/NesinaAct/NesinaAct-sc01-2019/NesinaAct_SC_01-2019
 
-SCN_DIR=~/Projects/Lynpaza/Lynpaza-Quiz-2019/screenshots
+SCN_DIR=~/Projects/NesinaAct/NesinaAct-sc01-2019/screenshots
 
 # Generate thumb files for each slide in the presentation
 

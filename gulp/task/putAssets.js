@@ -2,11 +2,18 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const { presentation, ProductName, numberOfSlide, shared } = setting;
-const baseDir = require("../../gulpfile");
-const distDir = baseDir + "/dist";
-const presentationDir = `${distDir}/${presentation}`;
-const copyDir = baseDir + "/copy";
+const {
+  presentation,
+  ProductName,
+  numberOfSlide,
+  DirectoryOfPresentation
+} = setting;
+const {
+  baseDir,
+  distDir,
+  presentationDir,
+  copyDir
+} = require("../../gulpfile");
 const fs = require("fs");
 const { makeCoreJS } = require("../coreSetting");
 
@@ -52,7 +59,19 @@ const makeHtml = slide => {
 </html>`;
   return data;
 };
-
+const forAsync = (putAction, file) => {
+  return new Promise((res, rej) => {
+    shell.cd(presentationDir);
+    shell.ls(presentationDir).forEach(slide => {
+      if (slide !== "shared") {
+        shell.cd(slide);
+        shell.mkdir(putAction);
+        shell.cd(putAction);
+      }
+    });
+    res();
+  });
+};
 gulp.task("putJs", () => {
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
@@ -61,8 +80,7 @@ gulp.task("putJs", () => {
       shell.mkdir("js");
       shell.cd("js");
       fs.writeFile("local.js", "", "utf8", err => {});
-      shell.cd("..");
-      shell.cd("..");
+      shell.cd("../../");
     }
   });
 });
@@ -75,13 +93,13 @@ gulp.task("putCss", () => {
       shell.mkdir("css");
       shell.cd("css");
       fs.writeFile("styles.css", "", "utf8", err => {});
-      shell.cd("..");
-      shell.cd("..");
+      shell.cd("../../");
+      // shell.cd("..");
     }
   });
 });
 
-gulp.task("putHtml", () => {
+gulp.task("putHtml", ["putCss", "putJs"], () => {
   //프레젠테이션을 열고
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
