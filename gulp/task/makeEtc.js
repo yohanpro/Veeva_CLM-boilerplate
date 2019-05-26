@@ -2,18 +2,8 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const {
-  presentation,
-  ProductName,
-  numberOfSlide,
-  DirectoryOfPresentation
-} = setting;
-const {
-  baseDir,
-  distDir,
-  presentationDir,
-  copyDir
-} = require("../../gulpfile");
+const { presentation } = require("../../config.json");
+const { distDir, copyDir } = require("../../gulpfile");
 const fs = require("fs");
 
 gulp.task("makeEtc", () => {

@@ -4,12 +4,7 @@
 /* Last modified by          yohan                         */
 /**********************************************************/
 
-const {
-  presentation,
-  ProductName,
-  numberOfSlide,
-  DirectoryOfPresentation
-} = require("./config.json");
+const { presentation } = require("./config.json");
 const baseDir = __dirname;
 const distDir = baseDir + `/dist`;
 const presentationDir = `${distDir}/${presentation}`;
