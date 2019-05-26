@@ -1,13 +1,12 @@
 var gulp = require("gulp");
 const shell = require("shelljs");
-const setting = require("../../config.json");
 
 const {
   presentation,
   ProductName,
   numberOfSlide,
   DirectoryOfPresentation
-} = setting;
+} = require("../../config.json");
 const {
   baseDir,
   distDir,
@@ -42,7 +41,6 @@ gulp.task("makeSubDir", () => {
   shell.mkdir(`${presentation}_REFS`);
   shell.mkdir(`${presentation}_PI`);
 
-  shell.cp("-Rf", `${copyDir}/.gitignore`, distDir);
-  shell.mkdir("shared");
+shell.mkdir("shared");
 });
 // fs.writeFile("README.md", `${presentationDir}`, "utf8", err => {});

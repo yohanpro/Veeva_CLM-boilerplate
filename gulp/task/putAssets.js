@@ -128,7 +128,7 @@ gulp.task("cpShared", () => {
   shell.mkdir("images");
   shell.cp(
     "-Rf",
-    [`${copyDir}/css`, `${copyDir}/media/*`],
+    [`${copyDir}/css`, `${copyDir}/media/*`, `${copyDir}/thumb.png`],
     `${presentationDir}/shared`
   );
 });

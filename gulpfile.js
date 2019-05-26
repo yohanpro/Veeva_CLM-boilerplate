@@ -1,19 +1,15 @@
 /**********************************************************/
-/* gulp task for GSK */
-/**********************************************************/
 /* File version              1.0                      */
-/* Last modified            2019/05/16                   */
+/* Last modified            2019/05/26                   */
 /* Last modified by          yohan                         */
 /**********************************************************/
-
-const setting = require("./config.json");
 
 const {
   presentation,
   ProductName,
   numberOfSlide,
   DirectoryOfPresentation
-} = setting;
+} = require("./config.json");
 const baseDir = __dirname;
 const distDir = baseDir + `/dist`;
 const presentationDir = `${distDir}/${presentation}`;

@@ -20,6 +20,10 @@ gulp.task("makeEtc", () => {
   shell.cd(distDir);
   shell.mkdir(["screenshots", "dist"]);
   fs.writeFile("README.md", `${presentation}`, "utf8", err => {});
-  shell.cp("-Rf", `${copyDir}/vault.numbers`, `${distDir}`);
+  shell.cp(
+    "-Rf",
+    [`${copyDir}/vault.numbers`, `${copyDir}/.gitignore`],
+    `${distDir}`
+  );
   shell.cd("..");
 });
