@@ -88,7 +88,7 @@ gulp.task("putCss", () => {
   });
 });
 
-gulp.task("putHtml", ["putCss", "putJs"], () => {
+gulp.task("putHtml", ["putCss", "putJs", "makeImageFolder"], () => {
   //프레젠테이션을 열고
   shell.cd(presentationDir);
   shell.ls(presentationDir).forEach(slide => {
