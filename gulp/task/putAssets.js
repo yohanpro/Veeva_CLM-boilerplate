@@ -44,6 +44,9 @@ const makeHtml = slide => {
 <body>
   <div class="container swipe-left swipe-right" id="swipe-area">
   </div>
+  <div>
+    <img class="background" src="../shared/media/images/bg01.jpg">
+  </div>
   <!-- end of container-->
 
   <script src="../shared/js/jquery-3.1.0.min.js"></script>
