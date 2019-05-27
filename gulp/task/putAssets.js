@@ -123,9 +123,12 @@ gulp.task("cpShared", () => {
   fs.writeFile("core.js", data, "utf8", err => {});
   shell.cd(`${presentationDir}/shared/`);
   fs.writeFile("index.html", "<html>shared</html>", "utf8", err => {});
+  shell.mkdir("media");
+  shell.cd(`${presentationDir}/shared/media/`);
+  shell.mkdir("images");
   shell.cp(
     "-Rf",
-    [`${copyDir}/css`, `${copyDir}/media/*`],
+    [`${copyDir}/css`, `${copyDir}/media/*`, `${copyDir}/thumb.png`],
     `${presentationDir}/shared`
   );
 });
