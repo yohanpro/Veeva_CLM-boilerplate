@@ -2,16 +2,15 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 
 const { presentation, numberOfSlide } = require("../../config.json");
-const { distDir, presentationDir } = require("../../gulpfile");
+const { baseDir, distDir, presentationDir } = require("../../gulpfile");
 
 gulp.task("deleteDist", () => {
   shell.rm("-Rf", `${distDir}/*`);
 });
 
 gulp.task("makeDir", ["deleteDist"], () => {
-  if (!`${distDir}`) {
-    shell.mkdir(`${distDir}`);
-  }
+  shell.cd(baseDir);
+  shell.mkdir("-p", "dist");
   shell.cd(distDir);
   shell.exec(`mkdir ${presentation}`);
 });
