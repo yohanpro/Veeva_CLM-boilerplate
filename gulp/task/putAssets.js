@@ -83,6 +83,7 @@ gulp.task("putCss", () => {
     if (slide !== "shared") {
       shell.cd(`${presentationDir}/${slide}`);
       shell.mkdir("css");
+      shell.cd("css");
       fs.writeFile("styles.css", "", "utf8", err => {});
       setTimeout(() => {
         shell.cd("../../");
