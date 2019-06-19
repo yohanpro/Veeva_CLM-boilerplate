@@ -69,6 +69,7 @@ gulp.task("putJs", () => {
     if (slide !== "shared") {
       shell.cd(`${presentationDir}/${slide}`);
       shell.mkdir("js");
+      shell.cd("js");
       fs.writeFile("local.js", "", "utf8", err => {});
       setTimeout(() => {
         shell.cd("../../");
