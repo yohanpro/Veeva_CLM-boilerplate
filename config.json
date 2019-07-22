@@ -2,5 +2,6 @@
   "presentation": "Orencia-Nudge-5_Acronym",
   "numberOfSlide": 2,
   "ProductName": "Orencia",
-  "DirectoryOfPresentation": "Acronym"
+  "DirectoryOfPresentation": "Acronym",
+  "SeperateMainAndADD": false
 }
