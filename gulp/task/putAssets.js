@@ -2,8 +2,8 @@ var gulp = require("gulp");
 const shell = require("shelljs");
 const setting = require("../../config.json");
 
-const { presentation, numberOfSlide } = setting;
-const { presentationDir, copyDir } = require("../../gulpfile");
+const { presentation, numberOfSlide, SeperateMainAndAdd } = setting;
+const { presentationDir, copyDir, distDir } = require("../../gulpfile");
 const fs = require("fs");
 const { makeCoreJS } = require("../coreSetting");
 
@@ -53,77 +53,71 @@ const makeHtml = slide => {
   return data;
 };
 
-gulp.task("putJs", () => {
+gulp.task("putAssets", () => {
   shell.cd(presentationDir);
-  shell.ls(presentationDir).forEach(slide => {
-    if (slide !== "shared") {
-      shell.cd(`${presentationDir}/${slide}`);
-      shell.mkdir("js");
-      shell.cd("js");
-      fs.writeFile("local.js", "", "utf8", err => {});
-      setTimeout(() => {
-        shell.cd("../../");
-      }, 10);
+  shell.ls(presentationDir).forEach(el => {
+    if (SeperateMainAndAdd) {
+      // 여기서 el은  프레젠테이션
+      shell.ls(`${presentationDir}/${el}`).forEach(slide => {
+        shell.cd(`${presentationDir}/${el}/${slide}`);
+        let htmlData = makeHtml(slide);
+        fs.writeFile("index.html", htmlData, "utf8", err => callback);
+        shell.mkdir("css");
+        shell.mkdir("images");
+        shell.mkdir("js");
+        shell.cd("css");
+        callback(fs.writeFile("styles.css", "", "utf8", err => {})).then(() => {
+          shell.cd("../");
+        });
+        shell.cd(`${presentationDir}/${el}/${slide}/js`);
+        callback(fs.writeFile("local.js", "", "utf8", err => {})).then(() => {
+          shell.cd("../");
+        });
+        shell.cd("../");
+      });
+    } else {
+      if (el !== "shared") {
+        shell.cd(`${presentationDir}/${el}`);
+        let htmlData = makeHtml(el);
+        fs.writeFile("index.html", htmlData, "utf8", err => callback);
+        shell.mkdir("css");
+        shell.mkdir("images");
+        shell.mkdir("js");
+        shell.cd("css");
+        callback(fs.writeFile("styles.css", "", "utf8", err => {})).then(() => {
+          shell.cd("../../");
+        });
+        shell.cd(`${presentationDir}/${el}/js`);
+        callback(fs.writeFile("local.js", "", "utf8", err => {})).then(() => {
+          shell.cd("../");
+        });
+      }
     }
   });
 });
 
-gulp.task("putCss", () => {
-  shell.cd(presentationDir);
-  shell.ls(presentationDir).forEach(slide => {
-    if (slide !== "shared") {
-      shell.cd(`${presentationDir}/${slide}`);
-      shell.mkdir("css");
-      shell.cd("css");
-      fs.writeFile("styles.css", "", "utf8", err => {});
-      setTimeout(() => {
-        shell.cd("../../");
-      }, 10);
-    }
-  });
-});
-
-gulp.task("putHtml", ["putCss", "putJs", "makeImageFolder"], () => {
-  //프레젠테이션을 열고
-  shell.cd(presentationDir);
-  shell.ls(presentationDir).forEach(slide => {
-    if (slide !== "shared") {
-      let htmlData = makeHtml(slide);
-      shell.cd(`${presentationDir}/${slide}`);
-      fs.writeFile("index.html", htmlData, "utf8", err => {});
-      setTimeout(() => {
-        shell.cd("..");
-      }, 10);
-    }
-  });
-  //각각의 슬라이드에 index.html파일을 넣어준다.
-});
-gulp.task("makeImageFolder", () => {
-  shell.cd(presentationDir);
-  shell.ls(presentationDir).forEach(slide => {
-    if (slide !== "shared") {
-      shell.cd(`${presentationDir}/${slide}`);
-      shell.mkdir("images");
-      setTimeout(() => {
-        shell.cd("..");
-      }, 10);
-    }
-  });
-});
 //shared 세팅
 gulp.task("cpShared", () => {
-  shell.cp("-Rf", `${copyDir}/js`, `${presentationDir}/shared`);
   let data = makeCoreJS();
-  shell.cd(`${presentationDir}/shared/js`);
+
+  shell.cd(`${distDir}/shared`);
+  shell.cp("-Rf", `${copyDir}/js`, `${distDir}/shared/js`);
+  shell.cd("js");
   fs.writeFile("core.js", data, "utf8", err => {});
-  shell.cd(`${presentationDir}/shared/`);
+  shell.cd(`${distDir}/shared`);
   fs.writeFile("index.html", "<html>shared</html>", "utf8", err => {});
   shell.mkdir("media");
-  shell.cd(`${presentationDir}/shared/media/`);
+  shell.cd(`${distDir}/shared/media`);
   shell.mkdir("images");
   shell.cp(
     "-Rf",
     [`${copyDir}/css`, `${copyDir}/media/*`, `${copyDir}/thumb.png`],
-    `${presentationDir}/shared`
+    `${distDir}/shared`
   );
 });
+
+const callback = fn => {
+  return new Promise((res, rej) => {
+    res(fn);
+  });
+};
