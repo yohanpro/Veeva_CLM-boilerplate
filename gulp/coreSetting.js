@@ -34,6 +34,7 @@ com.inno.veeva = {
     presentation: '${presentation}',
     slides: [${makeslides()}],
     addSlides: [
+      '${presentation}_PI', '${presentation}_REFS'
     ],
     home: '${slides[0]}',
     pi:'${presentation}_PI',
