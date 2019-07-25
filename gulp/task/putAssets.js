@@ -99,7 +99,6 @@ gulp.task("putAssets", () => {
 //shared 세팅
 gulp.task("cpShared", () => {
   let data = makeCoreJS();
-
   shell.cd(`${distDir}/shared`);
   shell.cp("-Rf", `${copyDir}/js`, `${distDir}/shared/js`);
   shell.cd("js");

@@ -56,7 +56,7 @@ gulp.task("makeSubDir", ["deleteDist", "makeDir"], () => {
     }
     shell.mkdir(`${presentation}_REFS`);
     shell.mkdir(`${presentation}_PI`);
-
+    shell.cd("..");
     shell.mkdir("shared");
   }
 });
