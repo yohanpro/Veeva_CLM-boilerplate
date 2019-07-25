@@ -2,7 +2,7 @@ var com = com || {};
 com.inno = com.inno || {};
 com.inno.veeva = {
     presentation: 'Orencia-Nudge-5_Acronym',
-    slides: ['Orencia-Nudge-5_Acronym_000','Orencia-Nudge-5_Acronym_001','Orencia-Nudge-5_Acronym_002','Orencia-Nudge-5_Acronym_003','Orencia-Nudge-5_Acronym_004'],
+    slides: ['Orencia-Nudge-5_Acronym_000','Orencia-Nudge-5_Acronym_001','Orencia-Nudge-5_Acronym_002','Orencia-Nudge-5_Acronym_003','Orencia-Nudge-5_Acronym_004','Orencia-Nudge-5_Acronym_005','Orencia-Nudge-5_Acronym_006','Orencia-Nudge-5_Acronym_007','Orencia-Nudge-5_Acronym_008','Orencia-Nudge-5_Acronym_009','Orencia-Nudge-5_Acronym_010','Orencia-Nudge-5_Acronym_011','Orencia-Nudge-5_Acronym_012','Orencia-Nudge-5_Acronym_013','Orencia-Nudge-5_Acronym_014'],
     addSlides: [
       'Orencia-Nudge-5_Acronym_PI', 'Orencia-Nudge-5_Acronym_REFS'
     ],
