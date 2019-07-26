@@ -18,6 +18,7 @@ require("./gulp/task/putAssets");
 require("./gulp/task/makeShFile");
 require("./gulp//task/makeEtc");
 require("./gulp/task/makeCSV");
+require("./gulp/task/makeGulpfile");
 
 gulp.task("build", [
   "makeDir",
@@ -26,5 +27,6 @@ gulp.task("build", [
   "cpShared",
   "makeShfile",
   "makeEtc",
-  "makeCSV"
+  "makeCSV",
+  "makeGulpfile"
 ]);

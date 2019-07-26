@@ -1,0 +1,27 @@
+{
+    "name": "",
+    "version": "1.0.0",
+    "description": "essential packages for clm development",
+    "main": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "gulp": "./node_modules/gulp/bin/gulp.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [
+        "clm"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": ""
+    },
+    "homepage": "",
+    "dependencies": {
+        "gulp": "^3.9.1"
+    },
+    "devDependencies": {}
+}
