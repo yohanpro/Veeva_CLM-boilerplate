@@ -2013,6 +2013,7 @@ com.veeva.clm.initialize = function initializeEngage() {
     }
 
     function engageMessage(message) {
+     try {
         var data = JSON.parse(message.data);
 
         if(data.type && data.type === "events") {
@@ -2041,6 +2042,9 @@ com.veeva.clm.initialize = function initializeEngage() {
                 }
             }
         }
+     } catch (error) {
+         
+     }
     }
 
     function simulateChangeEvent(target, data) {
