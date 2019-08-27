@@ -236,50 +236,7 @@ com.inno.veeva = {
         this.updateDebugMessage("Veeva API result: " + JSON.stringify(result));
       },
     
-      setLocalStoragePrevSlide: function(currentSlide) {
-        if (this.addSlides.indexOf(currentSlide) <= -1) {
-          this.updateDebugMessage("setting prevSlide");
-          window.sessionStorage.setItem("prevMainSlide", this.currentSlide);
-        }
-      },
-    
-      setVeevaRecordPrevSlide: function() {
-        var addSlides = this.addSlides;
-        var updateDebugMessage = this.updateDebugMessage;
-    
-        com.veeva.clm.getDataForCurrentObject(
-          "KeyMessage",
-          "Media_File_Name_vod__c",
-          function(result) {
-            updateDebugMessage(
-              "KeyMessage data received: " + JSON.stringify(result)
-            );
-    
-            if (result.success) {
-              var currentSlide = result.KeyMessage.Media_File_Name_vod__c;
-              currentSlide = currentSlide.substring(0, currentSlide.length - 4); // remove .zip
-              updateDebugMessage("Parsed slide name: " + currentSlide);
-              if (addSlides.indexOf(currentSlide) <= -1) {
-                // Save slide name if it is not one of the add slides.
-                updateDebugMessage("Updating Presentation...");
-    
-                var prevSlideRecord = {};
-                prevSlideRecord.Data_String_Field__c = currentSlide;
-                com.veeva.clm.updateCurrentRecord(
-                  "Presentation",
-                  prevSlideRecord,
-                  function(updatedRecord) {
-                    updateDebugMessage(
-                      "Updated Record" + JSON.stringify(updatedRecord)
-                    );
-                  }
-                );
-              }
-            }
-          }
-        );
-      },
-    
+
       init: function() {
         this.isVeeva = this.isVeevaEnvironment();
     
@@ -299,12 +256,6 @@ com.inno.veeva = {
         }
     
         this.initNav();
-    
-        if (this.isWindow) {
-          this.setVeevaRecordPrevSlide();
-        } else {
-          this.setLocalStoragePrevSlide(this.currentSlide);
-        }
       }
     };
     
@@ -317,12 +268,6 @@ com.inno.veeva = {
         false
       );
       com.inno.veeva.init();
-      var closeBtn = $(".btn-close");
-      if (closeBtn.length) {
-        closeBtn.on(com.inno.veeva.touchEvent, function() {
-          com.inno.veeva.navigateToPrevMainSlide();
-        });
-      }
     });
     `;
   return data;
