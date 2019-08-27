@@ -151,42 +151,43 @@ const records = () => {
         "slide.crm_shared_resource__v": "YES",
         "slide.clm_content__v": "YES",
         "slide.engage_content__v": "No"
-      },
-      {
-        name__v: `${presentation}_PI`,
-        "Create Presentation": "FALSE",
-        Type: "Slide",
-        lifecycle__v: "CRM Content Lifecycle",
-        "Presentation Link": `${presentation}`,
-        "Fields Only": "FALSE",
-        "slide.crm_media_type__v": "HTML",
-        "slide.crm_disable_actions__v": "Zoom, Swipe",
-        "slide.product__v.name__v": `${ProductName}`,
-        "slide.filename": `${presentation}_PI.zip`,
-        "slide.clm_content__v": "YES",
-        "slide.related_shared_resource__v": `${presentation}_Shared`,
-        "slide.engage_content__v": "No"
-      },
-      {
-        name__v: `${presentation}_REFS`,
-        "Create Presentation": "FALSE",
-        Type: "Slide",
-        lifecycle__v: "CRM Content Lifecycle",
-        "Presentation Link": `${presentation}`,
-        "Fields Only": "FALSE",
-        "slide.crm_media_type__v": "HTML",
-        "slide.crm_disable_actions__v": "Zoom, Swipe",
-        "slide.product__v.name__v": `${ProductName}`,
-        "slide.filename": `${presentation}_REFS.zip`,
-        "slide.clm_content__v": "YES",
-        "slide.related_shared_resource__v": `${presentation}_Shared`,
-        "slide.engage_content__v": "No"
       }
     ];
   }
 
   makeNormalSlideCSV(arr);
-
+  arr.push(
+    {
+      name__v: `${presentation}_PI`,
+      "Create Presentation": "FALSE",
+      Type: "Slide",
+      lifecycle__v: "CRM Content Lifecycle",
+      "Presentation Link": `${presentation}`,
+      "Fields Only": "FALSE",
+      "slide.crm_media_type__v": "HTML",
+      "slide.crm_disable_actions__v": "Zoom, Swipe",
+      "slide.product__v.name__v": `${ProductName}`,
+      "slide.filename": `${presentation}_PI.zip`,
+      "slide.clm_content__v": "YES",
+      "slide.related_shared_resource__v": `${presentation}_Shared`,
+      "slide.engage_content__v": "No"
+    },
+    {
+      name__v: `${presentation}_REFS`,
+      "Create Presentation": "FALSE",
+      Type: "Slide",
+      lifecycle__v: "CRM Content Lifecycle",
+      "Presentation Link": `${presentation}`,
+      "Fields Only": "FALSE",
+      "slide.crm_media_type__v": "HTML",
+      "slide.crm_disable_actions__v": "Zoom, Swipe",
+      "slide.product__v.name__v": `${ProductName}`,
+      "slide.filename": `${presentation}_REFS.zip`,
+      "slide.clm_content__v": "YES",
+      "slide.related_shared_resource__v": `${presentation}_Shared`,
+      "slide.engage_content__v": "No"
+    }
+  );
   return arr;
 };
 
