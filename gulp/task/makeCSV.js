@@ -131,7 +131,7 @@ const records = () => {
         Type: "Presentation",
         lifecycle__v: "Binder Lifecycle",
         "pres.crm_training__v": "FALSE",
-        "pres.crm_hidden__v": "TRUE",
+        "pres.crm_hidden__v": "FALSE",
         "pres.product__v.name__v": `${ProductName}`,
         "pres.clm_content__v": "YES",
         "pres.engage_content__v": "No",

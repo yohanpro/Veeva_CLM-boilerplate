@@ -35,7 +35,7 @@ const makeHtml = slide => {
   <div class="container swipe-left swipe-right" id="swipe-area">
   </div>
   <div>
-    <img class="background" src="../shared/media/images/bg01.jpg">
+    <img class="background" src="images/background.jpg">
   </div>
   <!-- end of container-->
 

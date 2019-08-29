@@ -111,7 +111,7 @@ cd $PROJECT
 for slide in $(ls); do
     if [ $slide != "shared" ]; then
       cd $slide
-      convert $SCN_DIR/$slide.jpg -thumbnail 200x150! -strip thumb.png
+      convert $SCN_DIR/$slide.png -thumbnail 200x150! -strip thumb.png
       cd ..
     fi
 done
