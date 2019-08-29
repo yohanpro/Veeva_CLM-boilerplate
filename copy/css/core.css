@@ -2,7 +2,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 100;
-  src: url("../media/fonts/NotoSans-Thin.woff");
+  src: url("../fonts/NotoSans-Thin.woff");
 }
 
 /* light */
@@ -11,7 +11,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 200;
-  src: url("../media/fonts/NotoSans-Light.woff");
+  src: url("../fonts/NotoSans-Light.woff");
 }
 
 /* demilight */
@@ -20,7 +20,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 300;
-  src: url("../media/fonts/NotoSans-DemiLight.woff");
+  src: url("../fonts/NotoSans-DemiLight.woff");
 }
 
 /* regular */
@@ -29,7 +29,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 400;
-  src: url("../media/fonts/NotoSans-Regular.woff");
+  src: url("../fonts/NotoSans-Regular.woff");
 }
 
 /* medium */
@@ -38,7 +38,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 500;
-  src: url("../media/fonts/NotoSans-Medium.woff");
+  src: url("../fonts/NotoSans-Medium.woff");
 }
 
 /* bold */
@@ -47,7 +47,7 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 700;
-  src: url("../media/fonts/NotoSans-Bold.woff");
+  src: url("../fonts/NotoSans-Bold.woff");
 }
 
 /* black */
@@ -56,12 +56,13 @@
   font-family: "NotoSans";
   font-style: normal;
   font-weight: 900;
-  src: url("../media/fonts/NotoSans-Black.woff");
+  src: url("../fonts/NotoSans-Black.woff");
 }
 
 /*===========================================================================================*/
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   overflow: hidden;
