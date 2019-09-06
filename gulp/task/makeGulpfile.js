@@ -39,6 +39,18 @@ const packageJson = `
 
 const setGulpFle = () => {
   if (SeperateMainAndAdd) {
+    return `gulp.task("gen-shared", function() {
+      shell.cd(rootFolder);
+      shell.ls(rootFolder).forEach(presentation => {
+        console.log(presentation);
+        shell.cp("-Rf", baseDir+"/shared",rootFolder);
+      });
+    });`;
+  } else {
+    return `gulp.task("gen-shared", function() {
+      shell.cd(rootFolder);
+      shell.cp("-Rf", baseDir+"/shared",rootFolder);
+    });`;
   }
 };
 
@@ -63,27 +75,17 @@ const rootFolder = baseDir+"/${presentation}";
 
 //gulp로 shared파일 자동 생성
 
-gulp.task("gen-shared", function() {
-  shell.cd(rootFolder);
-  shell.ls(rootFolder).forEach(presentation => {
-    console.log(presentation);
-    shell.cp("-Rf", baseDir+"/shared", presentation);
-  });
-});
+
 
 gulp.task("watch", () => {
   watch("./shared/**/*", () => {
     gulp.start("gen-shared");
   });
 });
-
+${setGulpFle()}
 gulp.task("default", ["gen-shared"]);
 `;
 
-const check = () => {
-  if (SeperateMainAndAdd) {
-  }
-};
 gulp.task("makeGulpfile", () => {
   // if (!SeperateMainAndAdd) {
   //   return; //만약 MAIN과 ADD로 안 나눠져있는 프로젝트라면 굳이 gulpfile 만들필요 없음.
