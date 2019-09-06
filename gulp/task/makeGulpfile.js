@@ -13,7 +13,6 @@ const packageJson = `
     "description": "essential packages for clm development",
     "main": "",
     "scripts": {
-        "test": "echo \\\"Error: no test specified\\\" && exit 1",
         "gulp": "./node_modules/gulp/bin/gulp.js"
     },
     "repository": {
@@ -30,11 +29,18 @@ const packageJson = `
     },
     "homepage": "",
     "dependencies": {
-        "gulp": "^3.9.1"
+      "gulp-watch": "^5.0.1",
+      "gulp": "^3.9.1",
+      "shelljs": "^0.8.3"
     },
     "devDependencies": {}
 }
 `;
+
+const setGulpFle = () => {
+  if (SeperateMainAndAdd) {
+  }
+};
 
 const gulpfileJS = `
 
@@ -46,24 +52,29 @@ const gulpfileJS = `
 /* Last modified by          yohan                         */
 /**********************************************************/
 
-var gulp = require("gulp");
+var gulp = require("gulp"),
+  shell = require("shelljs"),
+  watch = require("gulp-watch");
 
-//현재 경로 바꿔주기
+const baseDir = __dirname;
 
-const rootFolder = "./${presentation}/";
+
+const rootFolder = baseDir+"/${presentation}";
 
 //gulp로 shared파일 자동 생성
-const sharedSrc = "shared/**/*";
-const addSharedSrc = rootFolder + "${presentation}_ADD";
-const mainSharedSrc = rootFolder + "${presentation}_MAIN";
 
 gulp.task("gen-shared", function() {
-  return gulp
-    .src(sharedSrc, {
-      base: "."
-    })
-    .pipe(gulp.dest(addSharedSrc))
-    .pipe(gulp.dest(mainSharedSrc));
+  shell.cd(rootFolder);
+  shell.ls(rootFolder).forEach(presentation => {
+    console.log(presentation);
+    shell.cp("-Rf", baseDir+"/shared", presentation);
+  });
+});
+
+gulp.task("watch", () => {
+  watch("./shared/**/*", () => {
+    gulp.start("gen-shared");
+  });
 });
 
 gulp.task("default", ["gen-shared"]);
@@ -74,9 +85,9 @@ const check = () => {
   }
 };
 gulp.task("makeGulpfile", () => {
-  if (!SeperateMainAndAdd) {
-    return; //만약 MAIN과 ADD로 안 나눠져있는 프로젝트라면 굳이 gulpfile 만들필요 없음.
-  }
+  // if (!SeperateMainAndAdd) {
+  //   return; //만약 MAIN과 ADD로 안 나눠져있는 프로젝트라면 굳이 gulpfile 만들필요 없음.
+  // }
   shell.cd(distDir);
   fs.writeFile("package.json", packageJson, "utf8", err => {});
   fs.writeFile("gulpfile.js", gulpfileJS, "utf8", err => {});
